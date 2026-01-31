@@ -1,25 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Device Tools</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Advanced Device Tools</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 20px; }
-        .button { 
-            display: block; width: 100%; max-width: 300px; margin: 10px auto;
-            padding: 15px; background: #0070f3; color: white; 
-            text-decoration: none; border-radius: 8px; font-weight: bold;
+        :root {
+            --primary: #0070f3;
+            --secondary: #4a5568;
+            --success: #28a745;
+            --warning: #f6ad55;
         }
+        body { font-family: -apple-system, system-ui, sans-serif; text-align: center; padding: 20px; background: #f4f7f9; color: #333; }
+        .container { max-width: 400px; margin: auto; }
+        h2 { margin-bottom: 5px; }
+        p { font-size: 0.9em; color: #666; margin-bottom: 20px; }
+        
+        .section-title { text-align: left; font-size: 0.8em; text-transform: uppercase; color: #888; margin: 20px 0 10px 5px; font-weight: bold; }
+        
+        .button { 
+            display: block; width: 100%; box-sizing: border-box; margin: 8px 0;
+            padding: 14px; background: white; color: var(--primary); 
+            text-decoration: none; border-radius: 10px; font-weight: 600;
+            border: 1px solid #e2e8f0; transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .button:active { transform: scale(0.98); background: #f0f7ff; }
+        
+        /* Specific Colors */
+        .btn-settings { border-left: 5px solid var(--secondary); }
+        .btn-security { border-left: 5px solid var(--warning); }
+        .btn-google { border-left: 5px solid var(--primary); }
+        .btn-apps { border-left: 5px solid var(--success); }
     </style>
 </head>
 <body>
-    <h2>System Shortcuts</h2>
+
+<div class="container">
+    <h2>Device Shortcuts</h2>
+    <p>Advanced System Intents for Diagnostics</p>
     
-    <a href="intent:#Intent;action=android.settings.SETTINGS;end" class="button">Open Settings</a>
+    <div class="section-title">Core Settings</div>
+    <a href="intent:#Intent;action=android.settings.SETTINGS;end" class="button btn-settings">General Settings</a>
+    <a href="intent:#Intent;action=android.settings.WIFI_SETTINGS;end" class="button btn-settings">Wi-Fi Configuration</a>
+    <a href="intent:#Intent;action=android.settings.BLUETOOTH_SETTINGS;end" class="button btn-settings">Bluetooth Settings</a>
+    <a href="intent:#Intent;action=android.settings.DISPLAY_SETTINGS;end" class="button btn-settings">Display / Brightness</a>
 
-    <a href="intent:#Intent;action=android.settings.WIFI_SETTINGS;end" class="button">Open Wi-Fi</a>
+    <div class="section-title">Security & Bypass</div>
+    <a href="intent:#Intent;action=android.app.action.SET_NEW_PASSWORD;end" class="button btn-security">Set Screen Lock (Pattern/PIN)</a>
+    <a href="intent:#Intent;action=android.settings.BIOMETRIC_ENROLL;end" class="button btn-security">Fingerprint / Face ID</a>
+    <a href="intent:#Intent;action=android.settings.SECURITY_SETTINGS;end" class="button btn-security">Security Center</a>
 
-    <a href="intent:#Intent;action=android.settings.ADD_ACCOUNT_SETTINGS;end" class="button">Add Google Account</a>
+    <div class="section-title">Google & Accounts</div>
+    <a href="intent:#Intent;action=android.settings.ADD_ACCOUNT_SETTINGS;end" class="button btn-google">Add Google Account</a>
+    <a href="intent:#Intent;action=com.google.android.gms.settings.GOOGLE_SETTINGS;end" class="button btn-google">Google Services Settings</a>
+    <a href="intent:#Intent;action=android.intent.action.MAIN;targetClass=com.google.android.gms.auth.uiflows.minutemaid.MinuteMaidActivity;end" class="button btn-google">Login (Browser Flow)</a>
+
+    <div class="section-title">Apps & Utilities</div>
+    <a href="intent:#Intent;action=android.settings.APPLICATION_SETTINGS;end" class="button btn-apps">All Apps List</a>
+    <a href="intent:#Intent;action=android.intent.action.VIEW;data=https://www.google.com;end" class="button btn-apps">Open Browser (Google)</a>
+    <a href="intent:#Intent;action=android.settings.DEVICE_INFO_SETTINGS;end" class="button btn-apps">About Phone (Build Number)</a>
+</div>
 
 </body>
 </html>
